@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// app created by david sibato 15 october 2020
+import './main.css';
+import React from 'react'
+import ReactDom from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import {createStore} from 'redux'
+import {createBrowserHistory} from 'history'
+import thunk from 'redux-thunk'
+import {routerMiddleware, ConnectedRouter} from 'connected-react-router'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import {Provider} from 'react-redux'
+import { applyMiddleware } from "redux"
+
+import createRootReducer from 'reducers'
+import routes from 'routes'
+
+
+// app created by david sibato 15 october 2020 18:45
+
+const history = createBrowserHistory()
+const middlewares =[thunk, routerMiddleware(history)]
+const store = createStore(
+  createRootReducer(history),
+  composeWithDevTools(applyMiddleware(...middlewares))
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDom.render(
+  < Provider store={store}>
+    <ConnectedRouter history={history}>
+        {routes}
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root') 
+)
