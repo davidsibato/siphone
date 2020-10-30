@@ -3,13 +3,13 @@ import './main.css';
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import {createBrowserHistory} from 'history'
 import thunk from 'redux-thunk'
 import {routerMiddleware, ConnectedRouter} from 'connected-react-router'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
-import { applyMiddleware } from "redux"
+//import { applyMiddleware } from "redux"
 
 import createRootReducer from 'reducers'
 import routes from 'routes'
