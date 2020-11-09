@@ -51,6 +51,10 @@
 }
 
 /*Start Footer*/
+.dav p{
+    color: rgb(79, 235, 227);
+}
+
 .copyright{
     width:100%;
     text-align: center;
