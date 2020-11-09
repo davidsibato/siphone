@@ -51,6 +51,10 @@
 }
 
 /*Start Footer*/
+
+footer p{
+    color: #fff;
+}
 .copyright{
     width:100%;
     text-align: center;
